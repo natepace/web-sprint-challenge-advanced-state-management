@@ -1,11 +1,65 @@
+import { FETCH_SMURF_START, FETCH_SMURF_FAILURE, FETCH_SMURF_SUCCESS, ADD_SMURF,  SMURF_ERROR } from '../actions'; 
+
 
 export const initialState = {
+    smurfs: [],
+    isLoading: false,
+    error: ''
 }
+const initialList = [
+    {
+      id:1,
+      name:'Poppa Smurf',
+      position:'Village Leader',
+      nickname: 'Pops',
+      description: 'Papa is the practical village leader and the father figure of 100 or so young Smurfs. He is easily identified by his red Smurf hat, pants, and a shortly-trimmed white beard and moustache.'
+    },
+    {
+      id:"JzdWIiOiIxMjM0NTY3ODkwIiwibmFtZ",
+      name:'Smurfette',
+      position:'Beautician',
+      nickname: 'Smurfette',
+      description: 'Smurfette\'s role in the village is that of any other smurf; chores, and helping out where she can, but for her specifically, she is often seen to be very active in organizing events.'
+    }
+  ];
 
-const reducer = ()=>{
+const reducer = (state = initialState, action)=>{
+    switch(action.type) {
+
+        case SMURF_ERROR: 
+        return{
+            error: action.payload
+        }
+        case FETCH_SMURF_START:
+            return{
+                    ...state,
+                    isLoading: true
+            };
+            case FETCH_SMURF_SUCCESS:
+                return{
+                    ...state,
+                    smurfs: action.payload,
+                    isLoading: false,
+                    error: ''
+                };
+            case FETCH_SMURF_FAILURE:
+                return{
+                    ...state,
+                    isLoading:false,
+                    error: action.payload
+                };
+            case ADD_SMURF:
+                return{
+                    ...state,
+                    smurfs:[...state.smurfs,action.payload ]
+                }
+        default:
+            return state;
+    }
 }
 
 export default reducer;
+
 
 //Task List:
 //1. Adds the following state values into the initialState:
