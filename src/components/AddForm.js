@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { fetchSmurfs, addSmurf, errorMessage } from '../actions/index';
 import { connect } from 'react-redux';
 class AddForm extends React.Component {
+    // FOR THE RECORD I DID THIS WITHOUT CLASSCOMPONENT FIRST, then i did it this way because i thought it would fix a bug, then the bug turned out to be unrelated, no time to switch back.  
     // const [state, setState] = useState({
     //     name:"",
     //     position:"",
