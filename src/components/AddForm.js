@@ -73,6 +73,7 @@ render(){
             <button>Submit Smurf</button>
         </form>
     </section>);
+    // the error messages show as long as the fields are blank, thought that was right.
 }
 }
 const mapStateToProps = (state) => {
